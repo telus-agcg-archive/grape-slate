@@ -1,0 +1,44 @@
+---
+title: <%= name %> Reference
+
+language_tabs:
+  - shell
+
+toc_footers:
+  - <a href='#'>Sign Up for a Developer Key</a>
+---
+
+# <%= name %>
+
+<%= description %>
+
+<% resources.each do |resource| %>
+# <%= resource.title %>
+  <% resource.namespaced.each do |grouped_resource| %>
+    <% grouped_resource.paths.each do |resource_by_path| %>
+      <% resource_by_path.routes.each do |route| %>
+## <%= route.route_description %>
+
+```shell
+curl http://example.com
+```
+
+> The above command returns JSON structured like this:
+
+```json
+<%= resource.sample_response(route) %>
+```
+<%= route.route_description %>
+
+### HTTP Request
+
+`<%= route.route_method %>`
+
+### URL Parameters
+
+<%= properties_table(resource) %>
+
+      <% end %>
+    <% end %>
+  <% end %>
+<% end %>
