@@ -7,18 +7,12 @@ module GrapeSlate
   autoload :ExampleGenerator, 'grape-slate/example_generator'
 
   def self.config
-    block_given? ? yield(Config) : Config
-  end
-
-  class UnsupportedIDType < StandardError
-    def message
-      'Unsupported id type, supported types are [integer, uuid, bson]'
-    end
-  end
-
-  class BSONNotDefinied < StandardError
-    def message
-      'BSON type id requested but bson library is not present'
+    if block_given?
+      yield(GrapeMarkdown::Configuration)
+    else
+      GrapeMarkdown::Configuration
     end
   end
 end
+
+GrapeMarkdown::Configuration.extend :host
