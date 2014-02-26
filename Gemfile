@@ -4,5 +4,3 @@ source 'https://rubygems.org'
 gemspec
 
 gem 'grape', github: 'intridea/grape'
-
-gem 'grape-markdown', path: '/var/gems/grape-markdown'
