@@ -44,6 +44,8 @@ class GrapeSlate::ExampleGenerator::Shell
   end
 
   def data
+    return unless %w(POST PUT).include?(method)
+
     "--data '#{resource.sample_request(false)}'"
   end
 
