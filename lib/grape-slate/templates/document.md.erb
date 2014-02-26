@@ -19,9 +19,7 @@ toc_footers:
       <% resource_by_path.routes.each do |route| %>
 ## <%= route.route_description %>
 
-```shell
-curl http://example.com
-```
+<%= shell_example(route, resource) %>
 
 > The above command returns JSON structured like this:
 

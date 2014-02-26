@@ -1,0 +1,12 @@
+```shell
+<%
+  first = lines.shift
+  last  = lines.pop
+-%>
+<%= first -%>
+<%= ' \\' if lines.any? %>
+<% lines.each do |line| -%>
+  <%= line -%> \
+<% end -%>
+  <%= last %>
+```

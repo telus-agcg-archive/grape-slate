@@ -1,10 +1,10 @@
 require 'grape-markdown'
 
 module GrapeSlate
-  autoload :Version,         'grape-slate/version'
-  autoload :Config,          'grape-slate/config'
-  autoload :SampleGenerator, 'grape-slate/sample_generator'
-  autoload :Document,        'grape-slate/document'
+  autoload :Version,          'grape-slate/version'
+  autoload :SampleGenerator,  'grape-slate/sample_generator'
+  autoload :Document,         'grape-slate/document'
+  autoload :ExampleGenerator, 'grape-slate/example_generator'
 
   def self.config
     block_given? ? yield(Config) : Config

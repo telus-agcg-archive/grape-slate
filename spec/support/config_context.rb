@@ -1,4 +1,5 @@
 shared_context 'configuration' do
+  let(:host)               { 'http://api.example.com' }
   let(:name)               { 'some api v1' }
   let(:description)        { 'some blueprint description' }
   let(:resource_exclusion) { [:admin, :swagger_docs] }

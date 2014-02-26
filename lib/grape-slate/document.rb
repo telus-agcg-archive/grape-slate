@@ -1,8 +1,6 @@
 module GrapeSlate
   class Document < GrapeMarkdown::Document
-    attr_reader :api_class, :document_template, :properties_template
-
-    delegate(*GrapeMarkdown::Config::SETTINGS, to: 'GrapeSlate::Config')
+    attr_reader :shell_template
 
     def initialize(api_class)
       @api_class           = api_class
@@ -36,20 +34,13 @@ module GrapeSlate
       end
     end
 
-    def properties_table(resource)
-      ERB.new(properties_template, nil, '-').result(resource.resource_binding)
+      @shell_template = template_for(:shell)
     end
 
-    def formatted_request_headers
-      formatted_headers(GrapeSlate::Config.request_headers)
-    end
+    def shell_example(route, resource)
+      example = ExampleGenerator::Shell.new(route, resource)
 
-    def formatted_response_headers
-      formatted_headers(GrapeSlate::Config.response_headers)
-    end
-
-    def show_request_sample?(route)
-      %w(PUT POST).include?(route.route_method)
+      render(shell_template, example.example_binding)
     end
 
     private
