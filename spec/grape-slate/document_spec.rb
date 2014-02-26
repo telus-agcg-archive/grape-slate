@@ -5,9 +5,11 @@ describe GrapeSlate::Document do
 
   before do
     GrapeSlate.config do |config|
+      config.host               = host
       config.name               = name
       config.description        = description
       config.resource_exclusion = [:admin]
+      config.include_root       = true
     end
 
     GrapeSlate.config.request_headers = [
@@ -29,7 +31,6 @@ describe GrapeSlate::Document do
     subject { GrapeSlate::Document.new(klass).generate }
 
     it 'sets the title based on name' do
-      puts subject
       expect(subject).to include("title: #{name} Reference")
     end
 
@@ -45,12 +46,12 @@ describe GrapeSlate::Document do
       expect(subject).to include(description)
     end
 
-    # it 'includes groups for each resource' do
-    #   expect(subject).to include('# Group Widgets')
-    # end
+    it 'includes a headline for each resource' do
+      expect(subject).to include('# Widgets')
+    end
 
-    # it 'includes properties for the resources' do
-    #   expect(subject).to include('Properties')
-    # end
+    it 'includes properties for the resources' do
+      expect(subject).to include('Properties')
+    end
   end
 end
