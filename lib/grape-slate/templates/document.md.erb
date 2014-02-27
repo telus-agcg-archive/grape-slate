@@ -17,7 +17,7 @@ toc_footers:
   <% resource.namespaced.each do |grouped_resource| %>
     <% grouped_resource.paths.each do |resource_by_path| %>
       <% resource_by_path.routes.each do |route| %>
-## <%= route.route_description %>
+## <%= route.route_short_description %>
 
 <%= shell_example(route, resource) %>
 
@@ -28,11 +28,9 @@ toc_footers:
 ```
 <%= route.route_description %>
 
-### HTTP Request
+### HTTP Method
 
 `<%= route.route_method %>`
-
-### URL Parameters
 
 <%= properties_table(resource) %>
 

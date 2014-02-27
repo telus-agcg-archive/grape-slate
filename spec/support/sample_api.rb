@@ -31,6 +31,28 @@ class SampleApi < Grape::API
     end
   end
 
+  resource '/widgets/:widget_id/sprockets' do
+    desc 'create a sprocket for a specific widget'
+    params do
+      requires :name,
+               type: 'string',
+               desc: 'the widgets name',
+               documentation: { example: 'super widget' }
+    end
+    post '/' do
+    end
+
+    desc 'updates a sprocket for a specific widget'
+    params do
+      requires :name,
+               type: 'string',
+               desc: 'the widgets name',
+               documentation: { example: 'super widget' }
+    end
+    put ':id' do
+    end
+  end
+
   resource 'admin' do
     get '/' do
     end

@@ -51,7 +51,11 @@ describe GrapeSlate::Document do
     end
 
     it 'includes properties for the resources' do
-      expect(subject).to include('Properties')
+      expect(subject).to include('URL Parameters')
+    end
+
+    it 'does not include excluded resources' do
+      expect(subject).to_not match(/admin/i)
     end
   end
 end
