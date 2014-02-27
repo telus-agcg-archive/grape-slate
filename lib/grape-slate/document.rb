@@ -18,9 +18,8 @@ module GrapeSlate
 
     def template_for(name)
       directory = File.dirname(File.expand_path(__FILE__))
-      path = File.join(directory, "./templates/#{name}.md.erb")
 
-      File.read(path)
+      File.read(File.join(directory, "./templates/#{name}.md.erb"))
     end
   end
 end
