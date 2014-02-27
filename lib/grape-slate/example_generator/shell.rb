@@ -23,18 +23,16 @@ class GrapeSlate::ExampleGenerator::Shell
     route.route_method
   end
 
+  def route_path
+    route.route_path_without_format
+  end
+
   def command
-    "curl #{host}/#{route_name}/#{id}"
+    "curl #{host}/#{route_path}".split('/').reject!(&:empty?).join('/')
   end
 
   def request_by_id?
     method == 'GET' && !route.list? || %w(PUT DELETE).include?(method)
-  end
-
-  def id
-    return unless request_by_id?
-
-    GrapeMarkdown::Configuration.generate_id
   end
 
   def request
