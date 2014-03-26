@@ -28,7 +28,8 @@ class GrapeSlate::ExampleGenerator::Shell
   end
 
   def command
-    "curl #{host}/#{route_path}".split('/').reject!(&:empty?).join('/')
+    path = route_path.split('/').reject!(&:empty?).join('/')
+    "curl #{host}/#{path}"
   end
 
   def request_by_id?
