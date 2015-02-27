@@ -1,7 +1,7 @@
 class SampleApi < Grape::API
   resource 'widgets' do
     desc 'widgets list'
-    get  '/' do
+    get '/' do
     end
 
     desc 'individual widget'
@@ -27,7 +27,7 @@ class SampleApi < Grape::API
       optional :name, type: 'string', desc: 'the widgets name'
       optional :description, type: 'string', desc: 'the widgets name'
     end
-    put  ':id' do
+    put ':id' do
     end
   end
 
