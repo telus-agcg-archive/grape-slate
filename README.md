@@ -66,7 +66,7 @@ GrapeSlate.config.response_headers = [
 
 ```ruby
 # supply the class you'd like to document and generate your blueprint
-GrapeSlate::Blueprint.new(AwesomeAPI).generate
+GrapeSlate::Document.new(AwesomeAPI).generate
 ```
 
 ## TODO
